@@ -1,12 +1,16 @@
-import aboutPic from "../assets/pic1.png";
-import fb from "../assets/fb.svg";
-import github from "../assets/github.svg";
-import instagram from "../assets/instagram.svg";
-import linkedin from "../assets/linkedin.svg";
-import x from "../assets/x.svg";
-import discord from "../assets/discord.svg";
+import aboutPic from "../assets/aboutPic.png";
+import { FaDiscord, FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export const About = () => {
+
+  const facebook = "gtm.safal"
+  const instagram = "safal__gautam"
+  const linkedin = "safalbuilds"
+  const github = "safalbuilds"
+  const x = "safal__gautam"
+  const discord = "826641958138019841"
+
   return (
     <section className="my-16 flex md:justify-between md:flex-row flex-col">
       <div className="md:w-150 flex flex-col justify-center md:text-left text-center">
@@ -14,37 +18,37 @@ export const About = () => {
         <p>
           I’m Safal Gautam, a computer engineering student and full-stack
           enthusiast. My work ranges from C/C++ systems programming to Python
-          automation and React-based web applications. I focus on building tools
+          automation and React-basCVed web applications. I focus on building tools
           and projects that solve real problems efficiently. When I’m not
           coding, I document my learning journey and experiment with new
           technologies to stay ahead in modern development.
         </p>
         <div className="flex flex-row md:justify-start justify-around">
-          <a href="https://www.facebook.com/gtm.safal/" target="_blank">
-            <img src={fb} alt="Facebook" className="icons" />
+          <a href={`https://www.facebook.com/${facebook}`} target="_blank">
+            <FaFacebook className="icons" fill="var(--primary)"/>
           </a>
 
-          <a href="https://www.instagram.com/__safal622/" target="_blank">
-            <img src={instagram} alt="Instagram" className="icons" />
+          <a href={`https://www.instagram.com/${instagram}`} target="_blank">
+            <FaInstagram className="icons" fill="var(--primary)"/>
           </a>
 
-          <a href="https://www.linkedin.com/in/safalgautam22/" target="_blank">
-            <img src={linkedin} alt="linkedin" className="icons" />
+          <a href={`https://www.linkedin.com/in/${linkedin}`} target="_blank">
+            <FaLinkedin className="icons" fill="var(--primary)"/>
           </a>
 
-          <a href="https://x.com/safalgautam22/" target="_blank">
-            <img src={x} alt="Twitter" className="icons " />
+          <a href={`https://x.com/${x}`} target="_blank">
+            <FaSquareXTwitter className="icons" fill="var(--primary)"/>
           </a>
 
-          <a href="https://github.com/safalgautam22/" target="_blank">
-            <img src={github} alt="Github" className="icons" />
+          <a href={`https://github.com/${github}`} target="_blank">
+            <FaGithub className="icons" fill="var(--primary)"/>
           </a>
 
           <a
-            href="https://discord.com/users/826641958138019841"
+            href={`https://discord.com/users/${discord}`}
             target="_blank"
           >
-            <img src={discord} alt="Discord" className="icons" />
+            <FaDiscord className="icons" fill="var(--primary)"/>
           </a>
         </div>
       </div>

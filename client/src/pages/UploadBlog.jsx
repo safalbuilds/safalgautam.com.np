@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import upload from "../assets/upload.svg";
+import { LuUpload } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
 
 const API = import.meta.env.VITE_API_URL;
@@ -14,8 +14,8 @@ export const UploadBlog = () => {
     updated_at: "",
     size: 0,
   });
+  const isFileSelected = !!filename.file;
   const handleUpload = (e) => {
-    console.log(e.target.files[0]);
     const file = e.target.files[0];
     if (file) {
       setFilename(file.name);
@@ -64,9 +64,16 @@ export const UploadBlog = () => {
 
         <label
           htmlFor="blogfile"
-          className="cursor-pointer text-white px-5 py-2 font-semibold transition md:w-1/5 w-1/2 rounded-lg hover:-translate-y-1 hover:rotate-2"
+          className="cursor-pointer text-white px-5 py-2 font-semibold transition md:w-1/5 w-1/2 rounded-lg hover:-translate-y-2 flex items-center justify-center"
         >
-          <img src={upload} alt="uploadbutton" className="md:m-auto" />
+          <LuUpload
+            size={150}
+            className={`transition-all duration-300 ease-in-out ${
+              isFileSelected
+                ? "text-(--primary) scale-110 animate-pulse"
+                : ""
+            }`}
+          />
         </label>
         <input
           type="file"
