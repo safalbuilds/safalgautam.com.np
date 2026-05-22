@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { RingLoader } from "react-spinners";
 
+const username = "safalbuilds";
 const exception = ["safalgautam22", "vscode_customization", "heliosis", "Cpp"];
 
 const Card = ({ repo }) => {
@@ -36,13 +37,11 @@ export const Project = () => {
   const [repos, setRepos] = useState([]);
   const [visibleCount, setVisibleCount] = useState(2);
   const [loading, setLoading] = useState(true);
-
+  const url = `https://api.github.com/users/${username}/repos`;
   useEffect(() => {
     const getRepos = async () => {
       try {
-        const response = await axios.get(
-          "https://api.github.com/users/safalgautam22/repos",
-        );
+        const response = await axios.get(url);
 
         const filteredRepos = response.data.filter(
           (repo) => !exception.includes(repo.name),
