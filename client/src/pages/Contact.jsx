@@ -33,7 +33,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="flex items-center flex-col">
+    <section id="contact" className="flex items-center flex-col">
       <Toaster position="top-center" />
       <div>
         <h2 className="text-center text-3xl font-bold">Contact Me</h2>

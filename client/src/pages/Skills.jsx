@@ -27,7 +27,7 @@ export const Skills = () => {
   ];
 
   return (
-    <div className="my-10 text-center min-h-96 mt-24">
+    <section id="skills" className="my-10 text-center min-h-96 mt-24">
       <h1 className="text-3xl font-bold mb-1">Skills</h1>
       <span className="italic text-gray-500 ">
         My tech stack for building my projects.
@@ -47,6 +47,6 @@ export const Skills = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };

@@ -1,20 +1,21 @@
 import { Nav } from "../components/Navbar";
-import { Introduction } from "../components/Intro";
-import { Project } from "../components/Project";
-import { Skills } from "../components/Skills";
-import { About } from "../components/About";
-import { Contact } from "../components/Contact";
+import { Introduction } from "./Intro";
+import { Project } from "./Project";
+import { Skills } from "./Skills";
+import { About } from "./About";
+import { Contact } from "./Contact";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   return (
     <div id="home">
-      <nav><Nav /></nav>
-      <section id="intro"><Introduction /></section>
-      <section id="projects"><Project /></section>
-      <section id="skills"><Skills /></section>
-      <section id="about"><About /></section>
-      <section id="contact"><Contact /></section>
-      <footer className="text-center"><span className="align-middle text-2xl">&#169;</span> 2026 Safal Gautam. All rights reserved.</footer>
+      <Nav />
+      <Introduction />
+      <Project />
+      <Skills />
+      <About />
+      <Contact />
+      <Footer />
     </div>
   );
 }
