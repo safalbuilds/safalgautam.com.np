@@ -4,10 +4,10 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 export const About = () => {
 
   const facebook = "gtm.safal"
-  const instagram = "safal__gautam"
+  const instagram = "safal___gautam"
   const linkedin = "safalbuilds"
   const github = "safalbuilds"
-  const x = "safal__gautam"
+  const x = "safal___gautam"
   const discord = "826641958138019841"
 
   return (

@@ -17,8 +17,8 @@ export const Nav = ({ blog = false }) => {
   return (
     <>
       <nav className="navbar flex justify-between items-center px-4 md:px-10 py-4 backdrop-blur-md">
-        <Link
-          to="/"
+        <a
+          href="/"
           className="group transition-colors duration-300 cursor-pointer"
         >
           <h1 className="text-(--primary) text-2xl group-hover:text-(--white)">
@@ -28,10 +28,10 @@ export const Nav = ({ blog = false }) => {
             </span>{" "}
             {"}."}
           </h1>
-        </Link>
+        </a>
         <ul className="nav-links hidden sm:flex gap-6">
           <li>
-            <Link smooth to="/#home" className="nav-link">
+            <Link smooth to="/" className="nav-link">
               Home
             </Link>
           </li>
