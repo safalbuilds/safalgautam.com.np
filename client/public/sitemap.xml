@@ -12,6 +12,19 @@
     </image:image>
   </url>
 
+    <url>
+        <loc>https://www.safalgautam.com.np/blogs</loc>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+
+    <!-- Individual blog posts -->
+    <url>
+        <loc>https://www.safalgautam.com.np/blog/698d2e7e75f6d3e4d41ef7eb</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+
   <url>
     <loc>https://www.safalgautam.com.np/#projects</loc>
     <priority>0.8</priority>
