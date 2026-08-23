@@ -9,21 +9,23 @@ import {
   SiNodedotjs,
   SiCss,
   SiJupyter,
+  SiFigma
 } from "react-icons/si";
 
 export const Skills = () => {
   // Fixed skills list
   const skills = [
     { name: "Jupyter", icon: SiJupyter },
+    { name: "TypeScript", icon: SiTypescript },
     { name: "React", icon: SiReact },
     { name: "NodeJs", icon: SiNodedotjs },
-    { name: "Python", icon: SiPython },
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "C++", icon: SiCplusplus },
     { name: "JavaScript", icon: SiJavascript },
+    { name: "Python", icon: SiPython },
+    { name: "C++", icon: SiCplusplus },
     { name: "C", icon: SiC },
     { name: "HTML", icon: SiHtml5 },
     { name: "Css", icon: SiCss },
+    { name: "Figma", icon: SiFigma },
   ];
 
   return (

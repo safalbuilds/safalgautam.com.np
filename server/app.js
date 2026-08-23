@@ -23,10 +23,12 @@ app.get("/", (req,res) => {
     res.send("API running Successfully")
 })
 app.post("/submit", contact);
-app.post("/uploadblog",upload.single("file"), uploadBlog);
 app.get("/blogs", fetchBlogs);
 app.get("/blog/:id", fetchBlog)
-app.delete("/deleteblog/:id", deleteBlog)
+if(process.env.MODE != "production"){
+    app.post("/uploadblog",upload.single("file"),uploadBlog);
+    app.delete("/deleteblog/:id", deleteBlog)
+}
 
 app.listen(Port, () => {
     console.log("Server started on port 3000");

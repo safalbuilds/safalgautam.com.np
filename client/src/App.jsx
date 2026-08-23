@@ -12,9 +12,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />
-          <Route path="/uploadblog" element={<UploadBlog />} />
           <Route path="/blog/:id" element={<Blog />} />
-          <Route path="/deleteblog/:id" element={<DeleteBlog />} />
+          {import.meta.env.MODE !== "production" && (
+          <>
+            <Route path="/uploadblog" element={<UploadBlog />} />
+            <Route path="/deleteblog/:id" element={<DeleteBlog />} />
+          </>
+        )}
         </Routes>
       </BrowserRouter>
     </>

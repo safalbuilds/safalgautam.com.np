@@ -4,7 +4,7 @@ import { RingLoader } from "react-spinners";
 import { Card } from "../components/Card";
 
 const username = "safalbuilds";
-const exception = [username, "vscode_customization", "heliosis", "Cpp"];
+const exception = [username, "vscode_customization", "heliosis", "Cpp", "CallMe", "DSA"];
 
 export const Project = () => {
   const [repos, setRepos] = useState([]);
