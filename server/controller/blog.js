@@ -1,50 +1,112 @@
-import { marked } from "marked";
+import mongoose from "mongoose";
 import { Blogs } from "../Model/blogModel.js";
 
-const getTitleAndBody = (markdown) => {
-  const lines = markdown.split("\n");
-  const rawTitle = lines[0].replace(/^#+\s*/, ""); // Title (remove leading #)
-  const title = marked.parseInline(rawTitle);
-  const bodyMarkdown = lines.slice(1).join("\n"); // Body (everything except first line)
-  const body = marked.parse(bodyMarkdown);
-  return { title, body };
-};
-
 export const uploadBlog = async (req, res) => {
-  const content = req.file.buffer.toString("utf-8");
-  const { title, body } = getTitleAndBody(content);
   try {
+    if (!req.file) {
+      return res.status(400).json({
+        message: "No Markdown file provided",
+      });
+    }
+
+    const content = req.file.buffer.toString("utf-8");
+    const lines = content.split("\n");
+    // First line is the title
+    const title = lines[0].replace(/^#+\s*/, "").trim();
+    // Everything after the first line is the Markdown body
+    const body = lines.slice(1).join("\n").trim();
+
+    if (!title) {
+      return res.status(400).json({
+        message: "Markdown file must contain a title",
+      });
+    }
+
     await Blogs.create({
       title,
       body,
     });
 
-    res.status(200).json({
+    return res.status(201).json({
       message: `'${title}' added successfully`,
     });
   } catch (err) {
-    res.status(500).send(`Error adding blog '${title}'`);
+    console.error("Error adding blog:", err);
+
+    return res.status(500).json({
+      message: "Error adding blog",
+    });
   }
 };
 
 export const fetchBlogs = async (req, res) => {
-  const blogs = await Blogs.find().sort({ createdAt: -1 });
-  res.json(blogs);
+  try {
+    const blogs = await Blogs.find()
+      .sort({ createdAt: -1 });
+    return res.status(200).json(blogs);
+
+  } catch (err) {
+    console.error("Error fetching blogs:", err);
+    return res.status(500).json({
+      message: "Error fetching blogs",
+    });
+  }
 };
 
 export const fetchBlog = async (req, res) => {
-  const id = req.params.id;
-  const data = await Blogs.findById(id);
-  res.json(data);
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({
+      message: "Blog not found",
+    });
+  }
+
+  try {
+    const blog = await Blogs.findById(id);
+
+    if (!blog) {
+      return res.status(404).json({
+        message: "Blog not found",
+      });
+    }
+
+    return res.status(200).json(blog);
+  } catch (err) {
+    console.error("Error fetching blog:", err);
+
+    return res.status(500).json({
+      message: "Error fetching blog",
+    });
+  }
 };
 
 export const deleteBlog = async (req, res) => {
-  const id = req.params.id;
-  console.log(id);
-  try {
-    await Blogs.findByIdAndDelete(id);
-  } catch (err) {
-    console.log(err);
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({
+      message: "Blog not found",
+    });
   }
-  res.send(`Blog id: ${id} deleted successfully`);
+
+  try {
+    const blog = await Blogs.findByIdAndDelete(id);
+
+    if (!blog) {
+      return res.status(404).json({
+        message: "Blog not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: `Blog id: ${id} deleted successfully`,
+    });
+  } catch (err) {
+    console.error("Error deleting blog:", err);
+
+    return res.status(500).json({
+      message: "Error deleting blog",
+    });
+  }
 };

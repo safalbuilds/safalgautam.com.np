@@ -1,9 +1,20 @@
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema({
-  title: String,
-  body: String,
-  createdAt: { type: Date, default: Date.now },
-});
+const blogSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+
+    body: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 export const Blogs = mongoose.model("Blogs", blogSchema);
