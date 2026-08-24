@@ -2,7 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
-const API = import.meta.env.VITE_API_URL;
+// const API = import.meta.env.VITE_API_URL;
+const API = import.meta.env.VITE_API_URL_LOCAL;
+
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,9 +23,16 @@ export const Contact = () => {
   const formSubmission = async (e) => {
     e.preventDefault();
 
+    const submittedData = { ...formData };
+
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+
     try {
-      console.log(formData);
-      await axios.post(API + "submit", formData);
+      await axios.post(API + "/submit", submittedData);
       toast.success("Contact form submitted successfully ");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -38,7 +47,8 @@ export const Contact = () => {
       <div>
         <h2 className="text-center text-3xl font-bold">Contact Me</h2>
         <p className="text-center text-gray-500 italic">
-          Let’s build something amazing together. <br/>Reach out via email below or connect with me on GitHub.
+          Let’s build something amazing together. <br />
+          Reach out via email below or connect with me on GitHub.
         </p>
       </div>
 
