@@ -7,7 +7,7 @@ import { marked } from "marked";
 
 import { Nav } from "../../components/Navbar";
 
-const API = import.meta.env.VITE_API_URL_LOCAL;
+const API = import.meta.env.VITE_API_URL;
 
 const BlogCard = ({ blog }) => {
   return (

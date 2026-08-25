@@ -3,7 +3,7 @@ import axios from "axios";
 import { LuUpload } from "react-icons/lu";
 import toast, { Toaster } from "react-hot-toast";
 
-const API = import.meta.env.VITE_API_URL_LOCAL;
+const API = import.meta.env.VITE_API_URL;
 
 export const UploadBlog = () => {
   const fileInputRef = useRef(null);

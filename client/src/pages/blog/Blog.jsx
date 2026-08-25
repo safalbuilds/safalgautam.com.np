@@ -8,7 +8,7 @@ import { marked } from "marked";
 import { Nav } from "../../components/Navbar";
 import { NotFound } from "../NotFound";
 
-const API = import.meta.env.VITE_API_URL_LOCAL;
+const API = import.meta.env.VITE_API_URL;
 
 export const Blog = () => {
   const { id } = useParams();

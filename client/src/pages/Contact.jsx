@@ -3,7 +3,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 // const API = import.meta.env.VITE_API_URL;
-const API = import.meta.env.VITE_API_URL_LOCAL;
+const API = import.meta.env.VITE_API_URL;
 
 
 export const Contact = () => {

@@ -11,6 +11,7 @@ export const Project = () => {
   const [visibleCount, setVisibleCount] = useState(2);
   const [loading, setLoading] = useState(true);
   const url = `https://api.github.com/users/${username}/repos`;
+  
   useEffect(() => {
     const getRepos = async () => {
       try {
