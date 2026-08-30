@@ -46,7 +46,7 @@ export const About = () => {
       </div>
       <div></div>
       <img
-        src="/pic2.webp"
+        src="/safal-gautam2.webp"
         alt="About Image"
         className="object-contain md:w-1/4 hover:scale-110 w-1/2 m-auto md:m-0 aspect-square rounded-full shrink-0"
       />

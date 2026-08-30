@@ -3,7 +3,10 @@ export const Introduction = () => {
     "https://drive.google.com/uc?export=download&id=19l-yRFaEZd6YiNzxx49jTSVMfIzq1v2O";
 
   return (
-    <section id="intro" className="flex flex-col md:flex-row items-center justify-between mt-16 mb-50 md:my-32 px-4 md:px-10 gap-10 h-100 md:h-125" >
+    <section
+      id="intro"
+      className="flex flex-col md:flex-row items-center justify-between mt-16 mb-50 md:my-32 px-4 md:px-10 gap-10 h-100 md:h-125"
+    >
       <div className="w-full md:w-1/2 text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-(--primary)">
           Hi, I’m Safal Gautam
@@ -35,8 +38,11 @@ export const Introduction = () => {
 
       <div className="flex justify-center md:w-1/2 md:justify-end">
         <img
-          src="/pic.webp"
-          alt="Safal Gautam"
+          src="/safal-gautam.webp"
+          alt="Safal Gautam — Computer Engineering student and full-stack developer"
+          width={500}
+          height={500}
+          fetchPriority="high"
           className="w-64 sm:w-64 md:w-100 rounded-full hover:scale-105 transition"
         />
       </div>
