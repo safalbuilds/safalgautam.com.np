@@ -38,7 +38,7 @@ export const Project = () => {
 
   return (
     <section id="projects">
-      <div id="projects" className="text-center md:mt-10 mt-76">
+      <div className="text-center md:mt-10 mt-76">
         <h1 className="text-3xl font-bold">My Projects</h1>
         <span className="italic text-gray-500">
           Projects built with passion, precision, and a learner’s mindset.
