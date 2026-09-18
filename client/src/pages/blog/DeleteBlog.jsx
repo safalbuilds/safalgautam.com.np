@@ -6,7 +6,8 @@ import toast, { Toaster } from "react-hot-toast";
 const API = import.meta.env.VITE_API_URL;
 
 export const DeleteBlog = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
+
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -15,9 +16,9 @@ export const DeleteBlog = () => {
     try {
       setLoading(true);
 
-      await axios.delete(`${API}/deleteblog/${id}`);
+      await axios.delete(`${API}/blog/delete/${slug}`);
 
-      toast.success(`Blog: ${id} deleted successfully`);
+      toast.success(`Blog: ${slug} deleted successfully`);
 
       setTimeout(() => {
         navigate("/blogs");
@@ -42,10 +43,12 @@ export const DeleteBlog = () => {
       <div className="flex items-center flex-col gap-2">
         <div className="grid h-16 py-2">
           <p>Do you really want to delete?</p>
-          <p>{id}</p>
+
+          <p>{slug}</p>
         </div>
 
         <button
+          type="button"
           className="w-50 h-1/3 bg-(--primary) text-2xl font-bold rounded disabled:opacity-50"
           onClick={deleteBlog}
           disabled={loading}

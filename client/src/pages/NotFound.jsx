@@ -14,10 +14,22 @@ export const NotFound = () => {
 
   const script = [
     { type: "cmd", text: `cd ${path}` },
-    { type: "out", text: "bash: cd: No such file or directory" },
-    { type: "cmd", text: `curl -I safalgautam.com.np${path}` },
-    { type: "out", text: "HTTP/1.1 404 Not Found" },
-    { type: "out", text: "x-status: page-does-not-exist" },
+    {
+      type: "out",
+      text: "bash: cd: No such file or directory",
+    },
+    {
+      type: "cmd",
+      text: `curl -I safalgautam.com.np${path}`,
+    },
+    {
+      type: "out",
+      text: "HTTP/1.1 404 Not Found",
+    },
+    {
+      type: "out",
+      text: "x-status: page-does-not-exist",
+    },
   ];
 
   useEffect(() => {
@@ -31,27 +43,33 @@ export const NotFound = () => {
     if (charIndex < current.text.length) {
       const speed = current.type === "cmd" ? 32 : 8;
 
-      const t = setTimeout(() => setCharIndex((c) => c + 1), speed);
-
-      return () => clearTimeout(t);
-    } else {
       const t = setTimeout(
-        () => {
-          setTyped((prev) => [...prev, current]);
-          setLineIndex((i) => i + 1);
-          setCharIndex(0);
-        },
-        current.type === "cmd" ? 280 : 140,
+        () => setCharIndex((c) => c + 1),
+        speed,
       );
 
       return () => clearTimeout(t);
     }
 
+    const t = setTimeout(
+      () => {
+        setTyped((prev) => [...prev, current]);
+        setLineIndex((i) => i + 1);
+        setCharIndex(0);
+      },
+      current.type === "cmd" ? 280 : 140,
+    );
+
+    return () => clearTimeout(t);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lineIndex, charIndex]);
 
   useEffect(() => {
-    const blink = setInterval(() => setShowCursor((s) => !s), 530);
+    const blink = setInterval(
+      () => setShowCursor((s) => !s),
+      530,
+    );
 
     return () => clearInterval(blink);
   }, []);
@@ -79,8 +97,7 @@ export const NotFound = () => {
           <span className="w-3 h-3 rounded-full bg-(--white)/25" />
 
           <span className="ml-3 text-xs text-(--white)/50 tracking-wide truncate">
-            {" "}
-            safal@portfolio: ~{path}{" "}
+            safal@portfolio: ~{path}
           </span>
         </div>
 
@@ -88,7 +105,10 @@ export const NotFound = () => {
         <div className="rounded-b-lg border border-(--white)/10 px-5 py-4 sm:px-5 sm:py-8 bg-(--black2) shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
           <div className="space-y-1.5 text-[13px] sm:text-sm leading-relaxed">
             {typed.map((line, i) => (
-              <TerminalLine key={i} line={line} />
+              <TerminalLine
+                key={i}
+                line={line}
+              />
             ))}
 
             {!done && currentLine && (
@@ -104,11 +124,15 @@ export const NotFound = () => {
             {done && (
               <div className="pt-2">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-(--primary)">$</span>
+                  <span className="text-(--primary)">
+                    $
+                  </span>
 
                   <span
-                    className=" inline-block w-2.5 h-4 align-middle bg-(--primary)"
-                    style={{ opacity: showCursor ? 1 : 0 }}
+                    className="inline-block w-2.5 h-4 align-middle bg-(--primary)"
+                    style={{
+                      opacity: showCursor ? 1 : 0,
+                    }}
                   />
                 </div>
               </div>
@@ -119,7 +143,7 @@ export const NotFound = () => {
           {done && (
             <div className="mt-5 pt-4 border-t border-(--white)/10">
               <div className="flex items-baseline gap-3">
-                <span className=" text-5xl sm:text-6xl font-bold text-(--primary) tracking-tight">
+                <span className="text-5xl sm:text-6xl font-bold text-(--primary) tracking-tight">
                   404
                 </span>
 
@@ -128,9 +152,9 @@ export const NotFound = () => {
                 </span>
               </div>
 
-              <p className=" mt-3 text-(--white)/70 text-sm sm:text-base max-w-md ">
-                This page hasn't been built yet, or it moved. Either way,
-                there's nothing to render here.
+              <p className="mt-3 text-(--white)/70 text-sm sm:text-base max-w-md">
+                This page hasn't been built yet, or it moved. Either
+                way, there's nothing to render here.
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
@@ -143,7 +167,7 @@ export const NotFound = () => {
 
                 <a
                   href="/#projects"
-                  className=" px-4 py-2 rounded-md border border-(--white)/15 text-(--white) text-sm font-medium hover:border-(--primary) hover:text-(--primary) transition-colors"
+                  className="px-4 py-2 rounded-md border border-(--white)/15 text-(--white) text-sm font-medium hover:border-(--primary) hover:text-(--primary) transition-colors"
                 >
                   ./view-projects
                 </a>
@@ -164,14 +188,19 @@ function TerminalLine({ line, cursor }) {
   if (line.type === "cmd") {
     return (
       <div className="flex items-baseline gap-2">
-        <span className="text-(--primary) shrink-0">$</span>
+        <span className="text-(--primary) shrink-0">
+          $
+        </span>
 
         <span className="text-(--white) break-all sm:break-normal">
           {line.text}
+
           {cursor !== undefined && (
             <span
-              className=" inline-block w-2 h-3.5 ml-0.5 align-middle bg-(--primary)"
-              style={{ opacity: cursor ? 1 : 0 }}
+              className="inline-block w-2 h-3.5 ml-0.5 align-middle bg-(--primary)"
+              style={{
+                opacity: cursor ? 1 : 0,
+              }}
             />
           )}
         </span>
@@ -186,7 +215,9 @@ function TerminalLine({ line, cursor }) {
       {cursor !== undefined && (
         <span
           className="inline-block w-2 h-3.5 ml-0.5 align-middle bg-(--white)/50"
-          style={{ opacity: cursor ? 1 : 0 }}
+          style={{
+            opacity: cursor ? 1 : 0,
+          }}
         />
       )}
     </div>

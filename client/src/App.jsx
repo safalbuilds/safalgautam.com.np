@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { Home } from "./pages/Home";
 import { NotFound } from "./pages/NotFound";
+
 import { Blog } from "./pages/blog/Blog";
 import { Blogs } from "./pages/blog/Blogs";
 import { UploadBlog } from "./pages/blog/UploadBlog";
@@ -8,23 +10,29 @@ import { DeleteBlog } from "./pages/blog/DeleteBlog";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blog/:id" element={<Blog />} />
-          {import.meta.env.MODE != "production" && (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        {/* Blog listing */}
+        <Route path="/blogs" element={<Blogs />} />
+
+        {/* Individual blog */}
+        <Route path="/blog/:slug" element={<Blog />} />
+
+        {import.meta.env.MODE !== "production" && (
           <>
+            {/* Upload blog */}
             <Route path="/uploadblog" element={<UploadBlog />} />
-            <Route path="/deleteblog/:id" element={<DeleteBlog />} />
+
+            {/* Delete blog */}
+            <Route path="/deleteblog/:slug" element={<DeleteBlog />} />
           </>
         )}
-        <Route path="*" element={<NotFound />} />
 
-        </Routes>
-      </BrowserRouter>
-    </>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

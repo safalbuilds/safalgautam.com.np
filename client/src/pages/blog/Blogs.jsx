@@ -12,14 +12,14 @@ const API = import.meta.env.VITE_API_URL;
 const BlogCard = ({ blog }) => {
   return (
     <Link
-      to={`/blog/${blog._id}`}
+      to={`/blog/${blog.slug}`}
       className="p-10 rounded-2xl mt-10 bg-(--black2) shadow-lg hover:scale-105 transition-transform duration-300 md:w-[60%]"
     >
-      <h1 className="md:text-3xl text-xl font-bold text-(--primary) mb-5 hover:underline transition-all ease-in-out duration-300">
+      <h2 className="md:text-3xl text-xl font-bold text-(--primary) mb-5 hover:underline transition-colors duration-300">
         {blog.title}
-      </h1>
+      </h2>
 
-      <span className="text-gray-500">
+      <span className="text-gray-400">
         Updated at:{" "}
         {new Date(blog.createdAt).toLocaleDateString()}
       </span>
@@ -42,7 +42,7 @@ export const Blogs = () => {
   useEffect(() => {
     const getBlogs = async () => {
       try {
-        const res = await axios.get(`${API}/blogs`);
+        const res = await axios.get(`${API}/blog`);
 
         setBlogs(res.data);
       } catch (err) {
@@ -84,7 +84,7 @@ export const Blogs = () => {
         </div>
       ) : blogs.length === 0 ? (
         <div className="flex items-center justify-center h-96">
-          <p className="text-gray-500">
+          <p className="text-gray-400">
             No blogs available.
           </p>
         </div>
@@ -93,7 +93,7 @@ export const Blogs = () => {
           {blogs.map((blog) => (
             <BlogCard
               blog={blog}
-              key={blog._id}
+              key={blog.slug}
             />
           ))}
         </div>

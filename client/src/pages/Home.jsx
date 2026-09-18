@@ -22,11 +22,13 @@ export const Home = () => {
   return (
     <div id="home">
       <Nav />
-      <Introduction />
-      <Project />
-      <Skills />
-      <About />
-      <Contact />
+      <main>
+        <Introduction />
+        <Project />
+        <Skills />
+        <About />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );

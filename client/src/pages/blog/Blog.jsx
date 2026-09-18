@@ -11,7 +11,7 @@ import { NotFound } from "../NotFound";
 const API = import.meta.env.VITE_API_URL;
 
 export const Blog = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export const Blog = () => {
   useEffect(() => {
     const getBlog = async () => {
       try {
-        const res = await axios.get(`${API}/blog/${id}`);
+        const res = await axios.get(`${API}/blog/${slug}`);
 
         setBlog(res.data);
       } catch (err) {
@@ -35,7 +35,7 @@ export const Blog = () => {
     };
 
     getBlog();
-  }, [id]);
+  }, [slug]);
 
   if (!loading && (notFound || !blog)) {
     return <NotFound />;
@@ -54,7 +54,7 @@ export const Blog = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{blog.title}</title>
+        <title>{blog.title} - Safal Gautam</title>
       </Helmet>
 
       <div>
@@ -65,7 +65,7 @@ export const Blog = () => {
             {blog.title}
           </h1>
 
-          <span className="text-gray-500">
+          <span className="text-gray-400">
             Updated at:{" "}
             {new Date(blog.createdAt).toLocaleDateString()}
           </span>

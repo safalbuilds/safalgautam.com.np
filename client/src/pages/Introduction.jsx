@@ -12,7 +12,7 @@ export const Introduction = () => {
           Hi, I’m Safal Gautam
         </h1>
 
-        <span className="text-base md:text-lg text-gray-500">
+        <span className="text-base md:text-lg text-gray-400">
           I build software, web apps, and automation tools that solve real
           problems.
         </span>
@@ -29,7 +29,7 @@ export const Introduction = () => {
             href={CV}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-(--primary) text-white px-6 py-2 rounded-full font-semibold text-xl hover:bg-amber-700 hover:-translate-y-1 duration-300"
+            className="inline-block bg-(--primary) text-black px-6 py-2 rounded-full font-semibold text-xl hover:bg-amber-700 hover:-translate-y-1 transition-transform duration-300"
           >
             My CV
           </a>
@@ -40,10 +40,11 @@ export const Introduction = () => {
         <img
           src="/safal-gautam.webp"
           alt="Safal Gautam — Computer Engineering student and full-stack developer"
-          width={500}
-          height={500}
+          width="350"
+          height="350"
           fetchPriority="high"
-          className="w-64 sm:w-64 md:w-100 rounded-full hover:scale-105 transition"
+          decoding="async"
+          className="w-64 sm:w-64 md:w-87.5 rounded-full hover:scale-105 transition-transform"
         />
       </div>
     </section>
