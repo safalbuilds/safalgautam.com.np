@@ -7,6 +7,14 @@ const blogSchema = new mongoose.Schema(
       required: true,
     },
 
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+
     body: {
       type: String,
       required: true,
@@ -14,7 +22,7 @@ const blogSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const Blogs = mongoose.model("Blogs", blogSchema);
