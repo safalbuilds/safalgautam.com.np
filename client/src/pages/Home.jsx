@@ -1,11 +1,11 @@
 import { Nav } from "../components/Navbar";
-import { Introduction } from "./Introduction";
 import { Project } from "./Project";
 import { Skills } from "./Skills";
 import { About } from "./About";
 import { Contact } from "./Contact";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
+import { Hero } from "./Hero";
 
 export const Home = () => {
   useEffect(() => {
@@ -23,7 +23,7 @@ export const Home = () => {
     <div id="home">
       <Nav />
       <main>
-        <Introduction />
+        <Hero />
         <Project />
         <Skills />
         <About />

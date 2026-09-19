@@ -128,7 +128,7 @@ export const Contact = () => {
         <button
           type="submit"
           disabled={sending}
-          className="bg-(--primary) w-70 rounded p-2.5 font-bold mt-5 hover:-translate-y-1 text-black hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-(--primary)/80 w-70 rounded p-2.5 font-bold mt-5 hover:-translate-y-1 text-white hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {sending ? "Sending..." : "Send Message"}
         </button>

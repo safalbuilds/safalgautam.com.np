@@ -23,7 +23,7 @@ export const Nav = ({ blog = false }) => {
           className="group transition-colors duration-300 cursor-pointer"
           aria-label="Safal Gautam home"
         >
-          <span className="text-(--primary) text-2xl">
+          <span className="text-(--primary) text-2xl group-hover:text-(--white) transition-colors">
             {"{"}{" "}
             <span className="font-bold text-(--white) group-hover:text-(--primary)">
               SaFal

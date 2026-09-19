@@ -72,8 +72,8 @@ export const Project = () => {
   }, []);
 
   return (
-    <section id="projects" ref={projectsRef}>
-      <div className="text-center md:mt-10 mt-76">
+    <section id="projects" ref={projectsRef} className="py-16 md:py-24 px-4 md:px-10">
+      <div className="text-center">
         <h1 className="text-3xl font-bold">
           My Projects
         </h1>

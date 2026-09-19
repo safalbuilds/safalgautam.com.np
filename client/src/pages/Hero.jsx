@@ -1,11 +1,14 @@
-export const Introduction = () => {
+export const Hero = () => {
   const CV =
     "https://drive.google.com/uc?export=download&id=19l-yRFaEZd6YiNzxx49jTSVMfIzq1v2O";
 
   return (
     <section
-      id="intro"
-      className="flex flex-col md:flex-row items-center justify-between mt-16 mb-50 md:my-32 px-4 md:px-10 gap-10 h-100 md:h-125"
+      id="hero"
+      className="flex flex-col md:flex-row items-center md:justify-between 
+          md:min-h-[90svh] 
+           py-16 md:py-0 
+           px-4 md:px-10 gap-10"
     >
       <div className="w-full md:w-1/2 text-center md:text-left">
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-(--primary)">
@@ -29,7 +32,7 @@ export const Introduction = () => {
             href={CV}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-(--primary) text-black px-6 py-2 rounded-full font-semibold text-xl hover:bg-amber-700 hover:-translate-y-1 transition-transform duration-300"
+            className="inline-block bg-(--primary)/80 text-white px-6 py-2 rounded-full font-semibold text-xl hover:bg-amber-700 hover:-translate-y-1 transition-transform duration-300"
           >
             My CV
           </a>
