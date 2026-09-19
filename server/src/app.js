@@ -7,8 +7,9 @@ import blogRouter from "./routes/blog.routes.js";
 import contactRouter from "./routes/contact.routes.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 const storage = multer.memoryStorage();
+
 export const upload = multer({ storage });
 
 app.use(
@@ -30,8 +31,6 @@ app.get(["/", "/health"], (req, res) => {
 app.use("/api/blog", blogRouter);
 app.use("/api/contact", contactRouter);
 
-connectDatabase().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-  });
-});
+await connectDatabase();
+
+export default app;
