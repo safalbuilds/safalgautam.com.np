@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "identifier": "safal-gautam-portfolio",
+      "displayName": "Safal Gautam Portfolio",
+      "description": "Personal portfolio of Safal Gautam, a backend-focused full-stack developer.",
+      "type": "text/html",
+      "url": "https://www.safalgautam.com.np/",
+      "representativeQueries": [
+        "Who is Safal Gautam?",
+        "Show me Safal Gautam's portfolio",
+        "What projects has Safal Gautam built?",
+        "What technologies does Safal Gautam use?"
+      ]
+    },
+    {
+      "identifier": "safal-gautam-projects",
+      "displayName": "Safal Gautam Projects",
+      "description": "Software projects built by Safal Gautam, including web applications, APIs, developer tools, and automation projects.",
+      "type": "text/html",
+      "url": "https://www.safalgautam.com.np/#projects",
+      "representativeQueries": [
+        "What projects has Safal Gautam built?",
+        "Show me Safal Gautam's software projects",
+        "What applications has Safal Gautam developed?"
+      ]
+    },
+    {
+      "identifier": "student-life-in-computer-engineering-in-nepal",
+      "displayName": "Student Life in Computer Engineering in Nepal",
+      "description": "A blog post about student life while studying computer engineering in Nepal.",
+      "type": "text/html",
+      "url": "https://www.safalgautam.com.np/blog/student-life-in-computer-engineering-in-nepal",
+      "representativeQueries": [
+        "What is student life like in computer engineering in Nepal?",
+        "Tell me about studying computer engineering in Nepal",
+        "What is computer engineering student life like in Nepal?"
+      ]
+    },
+    {
+      "identifier": "safal-gautam-blog",
+      "displayName": "Safal Gautam Blog",
+      "description": "Blog articles written by Safal Gautam about software development, technology, learning, and computer engineering.",
+      "type": "text/html",
+      "url": "https://www.safalgautam.com.np/blogs",
+      "representativeQueries": [
+        "Show me Safal Gautam's blog",
+        "What has Safal Gautam written about?",
+        "Find articles by Safal Gautam"
+      ]
+    },
+    {
+      "identifier": "safal-gautam-contact",
+      "displayName": "Contact Safal Gautam",
+      "description": "Contact information and contact form for getting in touch with Safal Gautam.",
+      "type": "text/html",
+      "url": "https://www.safalgautam.com.np/#contact",
+      "representativeQueries": [
+        "How can I contact Safal Gautam?",
+        "How do I get in touch with Safal Gautam?"
+      ]
+    }
+  ]
+}
