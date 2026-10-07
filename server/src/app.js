@@ -5,6 +5,7 @@ import cors from "cors";
 import { connectDatabase } from "./utils/connection.js";
 import blogRouter from "./routes/blog.routes.js";
 import contactRouter from "./routes/contact.routes.js";
+import exceptionRouter from "./routes/exception.routes.js"
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.get(["/", "/health"], (req, res) => {
 
 app.use("/api/blog", blogRouter);
 app.use("/api/contact", contactRouter);
+app.use("/api/exception", exceptionRouter);
 
 await connectDatabase();
 
