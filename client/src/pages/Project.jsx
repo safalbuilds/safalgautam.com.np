@@ -5,25 +5,16 @@ import { RingLoader } from "react-spinners";
 import { Card } from "../components/Card";
 
 const username = "safalbuilds";
-
-const exception = [
-  username,
-  "vscode_customization",
-  "heliosis",
-  "Cpp",
-  "CallMe",
-  "DSA",
-];
+const API = import.meta.env.VITE_API_URL;
+const url = `https://api.github.com/users/${username}/repos`;
 
 export const Project = () => {
   const [repos, setRepos] = useState([]);
   const [visibleCount, setVisibleCount] = useState(2);
   const [loading, setLoading] = useState(true);
-
   const projectsRef = useRef(null);
   const hasFetched = useRef(false);
-
-  const url = `https://api.github.com/users/${username}/repos`;
+  const [fetched, setFetched] = useState(false);
 
   useEffect(() => {
     const getRepos = async () => {
@@ -33,18 +24,21 @@ export const Project = () => {
       hasFetched.current = true;
 
       try {
-        const response = await axios.get(url);
+        const [repoResponse, exceptionResponse] = await Promise.all([
+          axios.get(url),
+          axios.get(`${API}/exception`),
+        ]);
 
-        const filteredRepos = response.data.filter(
-          (repo) => !exception.includes(repo.name),
+        const exceptions = exceptionResponse.data.data.projects;
+        const filteredRepos = repoResponse.data.filter(
+          (repo) => !exceptions.includes(repo.name),
         );
 
         const sortedRepos = filteredRepos.sort(
-          (a, b) =>
-            new Date(b.updated_at) - new Date(a.updated_at),
+          (a, b) => new Date(b.updated_at) - new Date(a.updated_at),
         );
-
         setRepos(sortedRepos);
+        setFetched(true);
       } catch (err) {
         console.error("Failed to load repositories", err);
       } finally {
@@ -72,38 +66,31 @@ export const Project = () => {
   }, []);
 
   return (
-    <section id="projects" ref={projectsRef} className="py-16 md:py-24 px-4 md:px-10">
+    <section
+      id="projects"
+      ref={projectsRef}
+      className="py-16 md:py-24 px-4 md:px-10"
+    >
       <div className="text-center">
-        <h1 className="text-3xl font-bold">
-          My Projects
-        </h1>
+        <h1 className="text-3xl font-bold">My Projects</h1>
 
         <span className="italic text-gray-400">
-          Projects built with passion, precision, and a
-          learner’s mindset.
+          Projects built with passion, precision, and a learner’s mindset.
         </span>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center h-96">
           <div className="bg-(--black2) rounded-3xl p-4 flex items-center justify-center">
-            <RingLoader
-              color="#ff5000"
-              size={40}
-            />
+            <RingLoader color="#ff5000" size={40} />
           </div>
         </div>
-      ) : (
+      ) : fetched ? (
         <div>
           <div className="grid grid-cols-1 md:grid-cols-2 justify-around justify-items-center">
-            {repos
-              .slice(0, visibleCount)
-              .map((repo) => (
-                <Card
-                  key={repo.id}
-                  repo={repo}
-                />
-              ))}
+            {repos.slice(0, visibleCount).map((repo) => (
+              <Card key={repo.id} repo={repo} />
+            ))}
           </div>
 
           <div className="flex justify-center">
@@ -119,8 +106,7 @@ export const Project = () => {
                 if (visibleCount >= repos.length) {
                   setVisibleCount(2);
 
-                  const projectsSection =
-                    document.getElementById("projects");
+                  const projectsSection = document.getElementById("projects");
 
                   projectsSection?.scrollIntoView({
                     behavior: "instant",
@@ -166,6 +152,10 @@ export const Project = () => {
             </button>
           </div>
         </div>
+      ) : (
+        <span className="block text-center text-(--primary) mt-10">
+          No projects found
+        </span>
       )}
     </section>
   );
